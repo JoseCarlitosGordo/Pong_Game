@@ -4,6 +4,7 @@
 /**
  * 
  */
-module Pong_Game {
+module Pong_Game
+{
 	requires java.desktop;
 }
