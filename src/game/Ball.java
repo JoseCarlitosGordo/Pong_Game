@@ -1,5 +1,7 @@
 package game;
 
-public class Ball {
+public class Ball 
+{
+	
 
 }

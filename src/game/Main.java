@@ -11,6 +11,9 @@ public class Main
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setSize(690, 480);
 		frame.setVisible(true);
+		
+		PongGame GameState = new PongGame();
+		frame.add(GameState);
 
 	}
 
