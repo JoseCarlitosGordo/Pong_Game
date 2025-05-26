@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.*;
 public class Paddle extends Component
@@ -21,6 +22,7 @@ public class Paddle extends Component
 		this.color = color;	
 		this.isAI = isAI;
 		this.center = y + PADDLE_HEIGHT/2;
+		
 	}
 	public void paint(Graphics g) 
 	{
@@ -32,11 +34,7 @@ public class Paddle extends Component
 	public void moveTo(int direction)
 	{
 		this.y += speed * direction;
-		
+			
 	}
 	
-	
-	
-	
-
 }

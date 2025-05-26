@@ -29,6 +29,7 @@ public class Main
 			
 		};
 		Timer gameTimer = new Timer(33, gameLoop);
+		gameTimer.start();
 
 	}
 

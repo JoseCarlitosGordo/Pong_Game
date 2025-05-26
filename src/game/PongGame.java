@@ -13,10 +13,11 @@ public class PongGame extends JPanel implements KeyListener
 	private Paddle ai;
 	public PongGame()
 	{
-		paddle1 = new Paddle(140, 160, 0, false, Color.ORANGE);
+		paddle1 = new Paddle(140, 160, 10, false, Color.ORANGE);
 		ball = new Ball(320, 240, 0, 0, 0, Color.ORANGE);
 		ai = new Paddle(500, 160, 0, true, Color.ORANGE);
-		
+		addKeyListener(this);
+		super.setFocusable(true);
 	}
 	
 	public void paintComponent(Graphics g)
@@ -33,7 +34,7 @@ public class PongGame extends JPanel implements KeyListener
 	{
 		
 	}
-
+	
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -43,6 +44,7 @@ public class PongGame extends JPanel implements KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
+		System.out.println(e.getKeyCode());
 		int keyCode = e.getKeyCode();
 		if (keyCode == KeyEvent.VK_W)
 		{
@@ -50,7 +52,7 @@ public class PongGame extends JPanel implements KeyListener
 		}
 		else if (keyCode == KeyEvent.VK_S)
 		{
-			paddle1.moveTo(1);
+			
 		}
 		
 	}
@@ -60,4 +62,12 @@ public class PongGame extends JPanel implements KeyListener
 		
 	}
 
+	
+	
+	
+	
+
 }
+
+	
+
