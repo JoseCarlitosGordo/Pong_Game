@@ -1,6 +1,7 @@
 package game;
 
 
+import java.awt.event.*;
 
 import javax.swing.*;
 
@@ -17,6 +18,17 @@ public class Main
 		frame.add(GameState);
 		frame.setVisible(true);
 		
+		//action listener for our game loop. This captures player input
+		ActionListener gameLoop = new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				GameState.gameLogic();
+				GameState.repaint();
+			}
+			
+		};
+		Timer gameTimer = new Timer(33, gameLoop);
 
 	}
 
