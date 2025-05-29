@@ -9,13 +9,13 @@ public class PongGame extends JPanel implements KeyListener
 	
 	static final int WINDOW_WIDTH = 640, WINDOW_HEIGHT = 480;
 	private Paddle paddle1;
-	private Ball ball;
+	public Ball ball;
 	private Paddle ai;
 	public PongGame()
 	{
 		paddle1 = new Paddle(140, 160, 10, false, Color.ORANGE);
-		ball = new Ball(320, 240, 0, 0, 0, Color.ORANGE);
-		ai = new Paddle(500, 160, 0, true, Color.ORANGE);
+		ball = new Ball(320, 240, 5, 5, 0, Color.ORANGE);
+		ai = new Paddle(500, 160, 10, true, Color.ORANGE);
 		addKeyListener(this);
 		super.setFocusable(true);
 	}
@@ -24,14 +24,27 @@ public class PongGame extends JPanel implements KeyListener
 	{
 		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-		
+			
 		paddle1.paint(g);
 		ball.paint(g);
 		ai.paint(g);
+		g.drawString(paddle1.getScore() + "", 210, 100);
+		g.drawString(ai.getScore() + "", 410, 100);
 		
 	}
 	public void gameLogic()
 	{
+		ball.moveball();
+		if (ai.getY() > ball.getY())
+		{
+			ai.moveTo(-1);
+		}
+		else if (ai.getY() < ball.getY())
+		{
+			ai.moveTo(1);
+		}
+			
+		
 		
 	}
 	
@@ -44,7 +57,6 @@ public class PongGame extends JPanel implements KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
-		System.out.println(e.getKeyCode());
 		int keyCode = e.getKeyCode();
 		if (keyCode == KeyEvent.VK_W)
 		{
@@ -52,6 +64,7 @@ public class PongGame extends JPanel implements KeyListener
 		}
 		else if (keyCode == KeyEvent.VK_S)
 		{
+			paddle1.moveTo(1);
 			
 		}
 		

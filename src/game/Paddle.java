@@ -9,13 +9,14 @@ import javax.swing.*;
 public class Paddle extends Component
 {
 	final int PADDLE_WIDTH = 10, PADDLE_HEIGHT = 75;
-	private int x, y, speed;
+	private int x, y, speed, score;
 	private int center;
 	private Color color;
 	private boolean isAI;
 	
 	public Paddle(int x, int y, int speed, boolean isAI, Color color)
 	{
+		this.score= 0;
 		this.x = x;
 		this.y = y;
 		this.speed = speed;
@@ -28,13 +29,31 @@ public class Paddle extends Component
 	{
 		g.setColor(this.color);
 		g.fillRect(this.x, this.y, PADDLE_WIDTH, PADDLE_HEIGHT);
-		
 	}
 	
 	public void moveTo(int direction)
 	{
-		this.y += speed * direction;
+			this.y += speed * direction;
+		
+		
+		
+		
+		
 			
+	}
+	public void addScore()
+	{
+		this.score += 1;
+	}
+	
+	public int getScore()
+	{
+		return this.score;
+	}
+	
+	public int getY()
+	{
+		return this.y;
 	}
 	
 }

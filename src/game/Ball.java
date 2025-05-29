@@ -24,5 +24,19 @@ public class Ball extends Component
 		g.fillRect(this.x, this.y, PADDLE_WIDTH, PADDLE_HEIGHT);
 		
 	}
+	public void moveball()
+	{
+		this.x += xVelocity;
+		this.y += yVelocity;
+	}
 
+	public int getX()
+	{
+		return this.x;
+	}
+	
+	public int getY()
+	{
+		return this.y;
+	}
 }
