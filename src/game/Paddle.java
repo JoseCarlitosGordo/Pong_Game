@@ -31,9 +31,9 @@ public class Paddle extends Component
 		g.fillRect(this.x, this.y, PADDLE_WIDTH, PADDLE_HEIGHT);
 	}
 	
-	public void moveTo(int direction)
+	public void moveTo(float f)
 	{
-			this.y += speed * direction;
+			this.y += speed * f;
 		
 		
 		
@@ -54,6 +54,11 @@ public class Paddle extends Component
 	public int getY()
 	{
 		return this.y;
+	}
+	
+	public int getX()
+	{
+		return this.x;
 	}
 	
 }

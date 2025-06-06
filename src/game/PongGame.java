@@ -1,5 +1,6 @@
 package game;
 import java.awt.*;
+import java.util.Random;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -11,11 +12,13 @@ public class PongGame extends JPanel implements KeyListener
 	private Paddle paddle1;
 	public Ball ball;
 	private Paddle ai;
+	private Random random;
 	public PongGame()
 	{
 		paddle1 = new Paddle(140, 160, 10, false, Color.ORANGE);
-		ball = new Ball(320, 240, 5, 5, 0, Color.ORANGE);
+		ball = new Ball(320, 240, 10, 5, 0, Color.ORANGE);
 		ai = new Paddle(500, 160, 10, true, Color.ORANGE);
+		random = new Random();
 		addKeyListener(this);
 		super.setFocusable(true);
 	}
@@ -34,14 +37,14 @@ public class PongGame extends JPanel implements KeyListener
 	}
 	public void gameLogic()
 	{
-		ball.moveball();
+		ball.moveball(WINDOW_WIDTH, WINDOW_HEIGHT, paddle1, ai);
 		if (ai.getY() > ball.getY())
 		{
-			ai.moveTo(-1);
+			ai.moveTo(-1f);
 		}
 		else if (ai.getY() < ball.getY())
 		{
-			ai.moveTo(1);
+			ai.moveTo(1f);
 		}
 			
 		
