@@ -35,10 +35,6 @@ public class Paddle extends Component
 	{
 			this.y += speed * f;
 		
-		
-		
-		
-		
 			
 	}
 	public void addScore()

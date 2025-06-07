@@ -7,7 +7,8 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 public class PongGame extends JPanel implements KeyListener
 {
-	
+	private int aiReactionCounter = 0;
+	private static final int AI_REACTION_DELAY = 2;
 	static final int WINDOW_WIDTH = 640, WINDOW_HEIGHT = 480;
 	private Paddle paddle1;
 	public Ball ball;
@@ -16,8 +17,8 @@ public class PongGame extends JPanel implements KeyListener
 	public PongGame()
 	{
 		paddle1 = new Paddle(140, 160, 10, false, Color.ORANGE);
-		ball = new Ball(320, 240, 10, 5, 0, Color.ORANGE);
-		ai = new Paddle(500, 160, 10, true, Color.ORANGE);
+		ball = new Ball(320, 240, 15, 8,  Color.ORANGE);
+		ai = new Paddle(500, 160, 20, true, Color.ORANGE);
 		random = new Random();
 		addKeyListener(this);
 		super.setFocusable(true);
@@ -37,20 +38,53 @@ public class PongGame extends JPanel implements KeyListener
 	}
 	public void gameLogic()
 	{
+		
 		ball.moveball(WINDOW_WIDTH, WINDOW_HEIGHT, paddle1, ai);
-		if (ai.getY() > ball.getY())
+		aiReactionCounter++;
+		if(aiReactionCounter >= AI_REACTION_DELAY) 
 		{
-			ai.moveTo(-1f);
+			aiReactionCounter = 0;
+			if (ai.getY() > ball.getY())
+			{
+				ai.moveTo(-1f);
+			}
+			else if (ai.getY() < ball.getY())
+			{
+				ai.moveTo(1f);
+			}
 		}
-		else if (ai.getY() < ball.getY())
+		
+		if (ball.getX() >= WINDOW_WIDTH)
 		{
-			ai.moveTo(1f);
+			paddle1.addScore();
+			this.reset();
 		}
+		else if (ball.getX() <= 0)
+		{
+			ai.addScore();
+			this.reset();
+		}
+		
+		
+		
 			
 		
 		
 	}
 	
+	public void reset()
+	{
+		ball.setX(320);
+		ball.setY(240);
+		try 
+		{
+			Thread.sleep(1000);
+		} catch (InterruptedException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub

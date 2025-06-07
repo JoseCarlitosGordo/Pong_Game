@@ -28,7 +28,7 @@ public class Main
 			}
 			
 		};
-		Timer gameTimer = new Timer(33, gameLoop);
+		Timer gameTimer = new Timer(60, gameLoop);
 		gameTimer.start();	
 
 	}
