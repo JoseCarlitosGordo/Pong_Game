@@ -17,7 +17,7 @@ public class PongGame extends JPanel implements KeyListener
 	public PongGame()
 	{
 		paddle1 = new Paddle(140, 160, 10, false, Color.ORANGE);
-		ball = new Ball(320, 240, 15, 8,  Color.ORANGE);
+		ball = new Ball(320, 240, 10, 8,  Color.ORANGE);
 		ai = new Paddle(500, 160, 20, true, Color.ORANGE);
 		random = new Random();
 		addKeyListener(this);
